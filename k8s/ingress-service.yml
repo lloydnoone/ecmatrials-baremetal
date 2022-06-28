@@ -24,7 +24,7 @@ spec:
               service:
                 name: server-cluster-ip-service
                 port:
-                  number: 5000
+                  number: 8888
     - host: www.ecmatrials.com
       http:
         paths:
@@ -34,4 +34,4 @@ spec:
               service:
                 name: server-cluster-ip-service
                 port:
-                  number: 5000
+                  number: 8888

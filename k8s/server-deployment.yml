@@ -16,4 +16,4 @@ spec:
         - name: server
           image: spoonobi/multi-server-arm
           ports:
-            - containerPort: 5000
+            - containerPort: 8888
