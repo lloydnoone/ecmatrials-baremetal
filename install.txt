@@ -1,0 +1,32 @@
+***install
+
+sudo kubeadm reset
+
+Run other recommend reset commands
+
+Reset iptables —
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P OUTPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -F INPUT
+sudo iptables -F OUTPUT
+sudo iptables -F FORWARD
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+kubectl taint nodes k8s-node-01 node-role.kubernetes.io/control-plane:NoSchedule-
+
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/baremetal/deploy.yaml
+
+Edit nodeport numbers —
+KUBE_EDITOR="nano" kubectl edit svc ingress-nginx-controller -n ingress-nginx
+
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.yaml
+
+kubectl get pods --all-namespaces
+
+Then apply k8s
+
+***
